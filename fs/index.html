@@ -35,15 +35,27 @@
 			position: absolute;
 			bottom: 0;
 		}
+		
+		.ct-series .ct-line {
+			stroke: blue;
+		}
+		
+		.ct-series .ct-point {
+			stroke: blue;
+		}
+		
+		.ct-series .ct-area {
+			fill: blue;
+		}
 	</style>
 	
   </head>
   <body>
-        <section class="hero has-background-black">
+        <section class="hero">
             <div class="hero-body">
                 <div class="container">
                     <figure class="image center">
-                        <img src="img/plant2.png" style="max-width: 128px;">
+                        <img src="img/plant2.png" style="max-width: 175px;">
                     </figure>
                 </div>
             </div>
@@ -60,35 +72,52 @@
 				<div class="column center is-half">
 					<div>
 						<div class="ct-chart"></div>
-						<script>							
-							var chart = new Chartist.Line('.ct-chart', {
-							  labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-							  series: [
-								[1, 5, 2, 5, 4, 3],
-								[2, 3, 4, 8, 1, 2],
-								[5, 4, 3, 2, 1, 0.5]
-							  ]
-							}, {
-							  low: 0,
-							  showArea: true,
-							  showPoint: false,
-							  width: 600,
-							  height: 300							
-							});
+						<script>
+							var lastFive = [0,0,0,0,0,0,0,0,0,0];
+							
+							var lenFive = lastFive.length;
+							
+							var number;
+																					
+							var data = {
+								labels: ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8','#9', '#10'],
+								series: [
+									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+								]
+							};
+							
+							var options = {
+								width: 500,
+								height: 350,
+								low: 0,
+								showArea: true
+							};
+						
+							var myChart = new Chartist.Line('.ct-chart', data, options);
+							
+							setInterval(function(){
+								number = Math.floor((Math.random() * 11));
+								//console.log(number);												
+								for (i = 0; i < lenFive - 1; i++) {
+									lastFive[i] = lastFive[i+1];
+								}
+								
+								lastFive[lenFive - 1] = number;
+								
+								for (i = 0; i < lenFive; i++) {
+									console.log(lastFive[i]);
+								}
+								
+								var newData = {
+									labels: ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9', '#10'],
+									series: [
+										lastFive
+									]
+								};
 
-							chart.on('draw', function(data) {
-							  if(data.type === 'line' || data.type === 'area') {
-								data.element.animate({
-								  d: {
-									begin: 2000 * data.index,
-									dur: 2000,
-									from: data.path.clone().scale(1, 0).translate(0, data.chartRect.height()).stringify(),
-									to: data.path.clone().stringify(),
-									easing: Chartist.Svg.Easing.easeOutQuint
-								  }
-								});
-							  }
-							});						
+								myChart.update(newData);
+								
+							}, 1000);
 						</script>
 					</div>
 				</div>
