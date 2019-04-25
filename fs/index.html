@@ -47,6 +47,10 @@
 		.ct-series .ct-area {
 			fill: blue;
 		}
+		
+		.ct-chart {
+			width: 100%
+		}
 	</style>
 	
   </head>
@@ -69,57 +73,55 @@
 						<div class="water"></div>
 					</div>
 				</div>
-				<div class="column center is-half">
-					<div>
-						<div class="ct-chart"></div>
-						<script>
-							var lastFive = [0,0,0,0,0,0,0,0,0,0];
+				<div class="column has-text-centered is-half">				
+					<div class="ct-chart is-inline-block"></div>
+					<script>
+						var lastFive = [0,0,0,0,0,0,0,0,0,0];
+						
+						var lenFive = lastFive.length;
+						
+						var number;
+																				
+						var data = {
+							labels: ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8','#9', '#10'],
+							series: [
+								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+							]
+						};
+						
+						var options = {
+							//width: 500,
+							height: 350,
+							low: 0,
+							showArea: true
+						};
+					
+						var myChart = new Chartist.Line('.ct-chart', data, options);
+						
+						setInterval(function(){
+							number = Math.floor((Math.random() * 11));
+							//console.log(number);												
+							for (i = 0; i < lenFive - 1; i++) {
+								lastFive[i] = lastFive[i+1];
+							}
 							
-							var lenFive = lastFive.length;
+							lastFive[lenFive - 1] = number;
 							
-							var number;
-																					
-							var data = {
-								labels: ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8','#9', '#10'],
+							for (i = 0; i < lenFive; i++) {
+								console.log(lastFive[i]);
+							}
+							
+							var newData = {
+								labels: ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9', '#10'],
 								series: [
-									[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+									lastFive
 								]
 							};
 							
-							var options = {
-								width: 500,
-								height: 350,
-								low: 0,
-								showArea: true
-							};
-						
-							var myChart = new Chartist.Line('.ct-chart', data, options);
+							myChart.update(newData);
 							
-							setInterval(function(){
-								number = Math.floor((Math.random() * 11));
-								//console.log(number);												
-								for (i = 0; i < lenFive - 1; i++) {
-									lastFive[i] = lastFive[i+1];
-								}
-								
-								lastFive[lenFive - 1] = number;
-								
-								for (i = 0; i < lenFive; i++) {
-									console.log(lastFive[i]);
-								}
-								
-								var newData = {
-									labels: ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9', '#10'],
-									series: [
-										lastFive
-									]
-								};
-
-								myChart.update(newData);
-								
-							}, 1000);
-						</script>
-					</div>
+						}, 1000);
+					</script>					
 				</div>
 			</div>			
 		</section>
