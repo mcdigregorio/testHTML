@@ -3,12 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Water Test!</title>
+    <title>BsaBotics Gardening</title>
     <link rel="stylesheet" href="css/bulma.css">
 	<link rel="stylesheet" href="css/chartist.min.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="js/water.js"></script>
+	<script type="text/javascript" src="js/burgerToggle.js"></script>
 	<script type="text/javascript" src="js/chartist.min.js"></script>
 	<!-- <link rel="stylesheet" href="css/debug.css"> -->
 	<style>
@@ -49,25 +50,71 @@
 		}
 		
 		.ct-chart {
-			width: 100%
+			width: 100%;
+		}
+		
+		.navbar-item {
+			font-size: 20px;
+		}
+		
+		.iconMargin {
+			margin-right: 10px;
+			vertical-align: middle;
 		}
 	</style>
 	
   </head>
   <body>
-        <section class="hero">
+		<section class="hero is-info is-small">
+			<div class="hero-head">
+				<nav class="navbar" role="navigation" aria-label="main navigation">
+					<div class="navbar-brand">
+						<a class="brand" class="navbar-item" href="index.html">
+							<img src="img/plant2.png" width="100" height="100">
+						</a>
+						<a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+						  <span aria-hidden="true"></span>
+						  <span aria-hidden="true"></span>
+						  <span aria-hidden="true"></span>
+						</a>
+					</div>
+					<div id="navbarBasicExample" class="navbar-menu">
+						<div class="navbar-start">
+							<a class="navbar-item" href="index.html">
+								<span class="icon is-small iconMargin">
+								  <i class="fas fa-home"></i>
+								</span>
+								<span>Home</span>
+							</a>
+							<a class="navbar-item" href="https://www.google.com/">
+								<span class="icon is-small iconMargin">
+								  <i class="fas fa-sliders-h"></i>
+								</span>
+								<span>Configuration</span>
+							</a>				  
+						</div>
+						
+						<div class = "navbar-end">
+							<a class="navbar-item" href="https://www.google.com/">
+								<span class="icon is-small iconMargin">
+								  <i class="fas fa-info-circle"></i>
+								</span>
+								<span>About</span>
+							</a>
+						</div>
+					</div>
+				</nav>
+			</div>
             <div class="hero-body">
-                <div class="container">
-                    <figure class="image center">
-                        <img src="img/plant2.png" style="max-width: 175px;">
-                    </figure>
+                <div class="container has-text-centered">
+                    <h1 class="title">BsaBotics Gardening</h1>
                 </div>
             </div>
         </section>
 		
 		<!-- /.section -->
 		<section class="section">
-			<div class="columns is-multiline">
+			<div class="columns is-success is-multiline">
 				<div class="column is-half">
 					<div class="glass">
 						<div class="water"></div>
