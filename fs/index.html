@@ -6,63 +6,13 @@
     <title>BsaBotics Gardening</title>
     <link rel="stylesheet" href="css/bulma.css">
 	<link rel="stylesheet" href="css/chartist.min.css">
+	<link rel="stylesheet" href="css/style.css">
     <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript" src="js/water.js"></script>
 	<script type="text/javascript" src="js/burgerToggle.js"></script>
 	<script type="text/javascript" src="js/chartist.min.js"></script>
-	<!-- <link rel="stylesheet" href="css/debug.css"> -->
-	<style>
-		.center {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-		}
-		.glass {
-			margin: 30px auto;
-			height: 300px;
-			width: 300px;
-			position: relative;
-			border-style: none solid solid solid;
-			border-width: 10px;
-			border-color: lightgray;
-			border-radius: 10px;
-		}
-
-		.water {
-			width: 100%;
-			height: 5%;
-			background-color: skyblue;
-			position: absolute;
-			bottom: 0;
-		}
-		
-		.ct-series .ct-line {
-			stroke: blue;
-		}
-		
-		.ct-series .ct-point {
-			stroke: blue;
-		}
-		
-		.ct-series .ct-area {
-			fill: blue;
-		}
-		
-		.ct-chart {
-			width: 100%;
-		}
-		
-		.navbar-item {
-			font-size: 20px;
-		}
-		
-		.iconMargin {
-			margin-right: 10px;
-			vertical-align: middle;
-		}
-	</style>
-	
+	<!-- <link rel="stylesheet" href="css/debug.css"> -->	
   </head>
   <body>
 		<section class="hero is-info is-small">
@@ -122,53 +72,7 @@
 				</div>
 				<div class="column has-text-centered is-half">				
 					<div class="ct-chart is-inline-block"></div>
-					<script>
-						var lastFive = [0,0,0,0,0,0,0,0,0,0];
-						
-						var lenFive = lastFive.length;
-						
-						var number;
-																				
-						var data = {
-							labels: ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8','#9', '#10'],
-							series: [
-								[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-							]
-						};
-						
-						var options = {
-							//width: 500,
-							height: 350,
-							low: 0,
-							showArea: true
-						};
-					
-						var myChart = new Chartist.Line('.ct-chart', data, options);
-						
-						setInterval(function(){
-							number = Math.floor((Math.random() * 11));
-							//console.log(number);												
-							for (i = 0; i < lenFive - 1; i++) {
-								lastFive[i] = lastFive[i+1];
-							}
-							
-							lastFive[lenFive - 1] = number;
-							
-							for (i = 0; i < lenFive; i++) {
-								console.log(lastFive[i]);
-							}
-							
-							var newData = {
-								labels: ['#1', '#2', '#3', '#4', '#5', '#6', '#7', '#8', '#9', '#10'],
-								series: [
-									lastFive
-								]
-							};
-							
-							myChart.update(newData);
-							
-						}, 1000);
-					</script>					
+					<script type="text/javascript" src="js/waterGraph.js"></script>					
 				</div>
 			</div>			
 		</section>
