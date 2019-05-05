@@ -5,9 +5,10 @@
 	align-items: center;
 }
 .glass {
-	margin: 30px auto;
-	height: 300px;
-	width: 300px;
+	margin: auto;
+	margin-top: -5%;
+	height: 120px;
+	width: 120px;
 	position: relative;
 	border-style: none solid solid solid;
 	border-width: 10px;
@@ -51,4 +52,263 @@
 .navbar-burger {
 	width: 100px;
 	height: 100px;
+}
+
+.boxContain {
+  position: relative;
+  margin: auto;
+  margin-bottom: none;
+  display: block;
+  //margin-top: 1%;
+  width: 250px;
+  height: 300px;
+  //background: none;
+  //border: solid 4px red;
+}
+
+.base{
+  z-index: 1;
+  background: #00cc00;
+  position: absolute;
+  margin: auto;
+  top: 40%;
+  left: 45%;
+  height: 60%;
+  width: 8%;
+}
+
+.leaf {
+  z-index: 1;
+  background: #00cc00;
+  position: absolute;
+  margin: auto;
+  top: 62%;
+  left: 52%;
+  height: 18%;
+  width: 18%;
+  border-radius: 100% 0% 100% 0%;  
+}
+
+.leafTop{
+  position: absolute;
+  top: 42%;
+  left: -10%;
+  background: #009900;
+  width: 150%;
+  height: 30%;
+  border-radius: 50% / 100%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  transform: rotate(130deg);
+  
+}
+
+.leaf2 {
+  z-index: 1;
+  background: #00cc00;
+  position: absolute;
+  margin: auto;
+  top: 48%;
+  left: 27%;
+  height: 18%;
+  width: 18%;
+  border-radius: 100% 0% 100% 0%;  
+  transform: rotate(100deg);
+}
+
+.head {
+  z-index: 1;
+  background: #00cc00;
+  position: absolute;
+  margin: auto;
+  top: 18%;
+  left: 31%;
+  height: 28%;
+  width: 58%;
+  border-radius: 47%;
+  overflow: hidden;
+}
+
+.lips {
+  z-index: 1;
+  background: #FBE7C5;
+  position: absolute;
+  margin: auto;
+  top: 30%;
+  left: 72%;
+  height: 65%;
+  width: 18%;
+  border: solid 6px red;
+  border-bottom: none;
+  border-radius: 60%/60%;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  transform: rotate(270deg);
+}
+
+.tongue {
+  z-index: 1;
+  background: #ff6666;
+  position: absolute;
+  margin: auto;
+  top: 8%;
+  left: 0%;
+  height: 71%;
+  width: 41%;
+  border-radius: 47%/40%;
+}
+
+.tongueGroove {
+  z-index: 1;
+  background: #ff4040;
+  position: absolute;
+  margin: auto;
+  top: 35%;
+  left: 30%;
+  height: 46%;
+  width: 31%;
+  border-radius: 47%/40%;
+}
+
+.accent1 {
+  position: absolute;
+  top: 32%;
+  left: 2%;
+  background: none;
+  width: 80%;
+  height: 30%;
+  border-radius: 80% 80% / 100% 100%;
+  border: solid 4px #009900;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  transform: rotate(-6deg);
+}
+
+.accent2 {
+  position: absolute;
+  top: 14%;
+  left: 5%;
+  background: none;
+  width: 40%;
+  height: 20%;
+  border-radius: 80% 80% / 100% 100%;
+  border: solid 4px #009900;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  transform: rotate(-13deg);
+}
+
+.accent3 {
+  position: absolute;
+  top: 61%;
+  left: 7%;
+  background: none;
+  width: 55%;
+  height: 20%;
+  border-radius: 80% 80% / 100% 100%;
+  border: solid 4px #009900;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  transform: rotate(6deg);
+}
+
+.accent4 {
+  position: absolute;
+  top: 46%;
+  left: 4%;
+  background: none;
+  width: 52%;
+  height: 18%;
+  border-radius: 80% 80% / 100% 100%;
+  border: solid 4px #009900;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  transform: rotate(1deg);
+}
+
+.eyeWhite {
+  z-index: 1;
+  background: white;
+  position: absolute;
+  margin: auto;
+  top: 11%;
+  left: 61%;
+  height: 14%;
+  width: 14%;
+  border-radius: 50%;
+  border: solid 1px green;
+}
+
+.eyeWhite2 {
+  z-index: 1;
+  background: white;
+  position: absolute;
+  margin: auto;
+  top: 11%;
+  left: 74%;
+  height: 14%;
+  width: 14%;
+  border-radius: 50%;
+  border: solid 1px green;
+}
+
+.iris {
+  z-index: 1;
+  background: red;
+  position: absolute;
+  margin: auto;
+  top: 37%;
+  left: 37%;
+  height: 58%;
+  width: 58%;
+  border-radius: 50%;
+  //border: solid 1px darkred;
+}
+
+.pupil {
+  z-index: 1;
+  background: black;
+  position: absolute;
+  margin: auto;
+  top: 47%;
+  left: 46%;
+  height: 44%;
+  width: 44%;
+  border-radius: 50%;
+}
+
+.rightEyebrow{
+  z-index: 1;
+  background: none;
+  position: absolute;
+  margin: auto;
+  top: 9%;
+  left: 76%;
+  height: 10%;
+  width: 11%;
+  border-radius: 35% 60% 0% 0%/25% 30% 80% 0%;
+  border: solid 4px red;
+  border-right: none;
+  border-left: none;
+  border-bottom: none;
+}
+
+.leftEyebrow{
+  z-index: 1;
+  background: none;
+  position: absolute;
+  margin: auto;
+  top: 9%;
+  left: 61%;
+  height: 10%;
+  width: 11%;
+  border-radius: 60% 35% 0% 0%/30% 25% 0% 80%;
+  border: solid 4px red;
+  border-right: none;
+  border-left: none;
+  border-bottom: none;
 }
