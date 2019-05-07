@@ -6,7 +6,7 @@
 }
 .glass {
 	margin: auto;
-	margin-top: -5%;
+	margin-top: -10%;
 	height: 120px;
 	width: 120px;
 	position: relative;
@@ -36,7 +36,23 @@
 	fill: blue;
 }
 
+.ct-chart2 .ct-series .ct-line {
+	stroke: yellow;
+}
+
+.ct-chart2 .ct-series .ct-point {
+	stroke: yellow;
+}
+
+.ct-chart2 .ct-series .ct-area {
+	fill: yellow;
+}
+
 .ct-chart {
+	width: 100%;
+}
+
+.ct-chart2 {
 	width: 100%;
 }
 
@@ -59,7 +75,7 @@
   margin: auto;
   margin-bottom: none;
   display: block;
-  margin-top: -10%;
+  margin-top: -12%;
   width: 250px;
   height: 300px;
   //background: none;

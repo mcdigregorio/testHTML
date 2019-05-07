@@ -1,10 +1,10 @@
-var lastFive = [0,0,0,0,0,0,0,0,0,0];
+var lastFiveSun = [0,0,0,0,0,0,0,0,0,0];
 						
-var lenFive = lastFive.length;
+var lenFiveSun = lastFiveSun.length;
 
 var number;
 														
-var data = {
+var dataSun = {
 	labels: ['1', '2', '3', '4', '5', '6', '7', '8','9', '10'],
 	series: [
 		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
@@ -20,28 +20,28 @@ var options = {
 	showArea: true
 };
 
-var myChart = new Chartist.Line('.ct-chart', data, options);
+var myChart2 = new Chartist.Line('.ct-chart2', dataSun, options);
 
 setInterval(function(){
 	number = Math.floor((Math.random() * 11));
 	//console.log(number);												
-	for (i = 0; i < lenFive - 1; i++) {
-		lastFive[i] = lastFive[i+1];
+	for (i = 0; i < lenFiveSun - 1; i++) {
+		lastFiveSun[i] = lastFiveSun[i+1];
 	}
 	
-	lastFive[lenFive - 1] = number;
+	lastFiveSun[lenFiveSun - 1] = number;
 	
-	for (i = 0; i < lenFive; i++) {
-		console.log(lastFive[i]);
+	for (i = 0; i < lenFiveSun; i++) {
+		console.log(lastFiveSun[i]);
 	}
 	
-	var newData = {
+	var newDataSun = {
 		labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
 		series: [
-			lastFive
+			lastFiveSun
 		]
 	};
 	
-	myChart.update(newData);
+	myChart2.update(newDataSun);
 	
 }, 1000);
