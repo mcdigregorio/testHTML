@@ -12,10 +12,11 @@
 	<script type="text/javascript" src="js/water.js"></script>
 	<script type="text/javascript" src="js/burgerToggle.js"></script>
 	<script type="text/javascript" src="js/chartist.min.js"></script>
+	<script type="text/javascript" src="js/toggleLED.js"></script>
 	<!-- <link rel="stylesheet" href="css/debug.css">	 -->
   </head>
   <body>
-		<section class="hero is-info is-small">
+		<section class="hero is-info is-small is-fullheight is-bold">
 			<div class="hero-head">
 				<nav class="navbar" role="navigation" aria-label="main navigation">
 					<div class="navbar-brand">
@@ -36,7 +37,7 @@
 								</span>
 								<span>Home</span>
 							</a>
-							<a class="navbar-item" href="config.shtml">
+							<a class="navbar-item" href="config.html">
 								<span class="icon is-small iconMargin">
 								  <i class="fas fa-sliders-h"></i>
 								</span>
@@ -58,61 +59,33 @@
             <div class="hero-body">
                 <div class="container has-text-centered">
                     <h1 class="title">BsaBotics Gardening</h1>
+					<a class = "button is-large is-info is-inverted is-rounded" onclick="toggleLED();">Toggle LED</a>
+					<div class="configTags">
+						<div class="field is-grouped is-grouped-multiline">
+							  <div class="control">
+								<div class="tags has-addons are-large">
+								  <span class="tag is-dark">uptime</span>
+								  <span class="tag is-success"><!--#uptime--> seconds</span>
+								</div>
+							  </div>
+
+							  <div class="control">
+								<div class="tags has-addons are-large">
+								  <span class="tag is-dark">free heap</span>
+								  <span class="tag is-success"><!--#heap--> bytes</span>
+								</div>
+							  </div>
+
+							  <div class="control">
+								<div class="tags has-addons are-large">
+								  <span class="tag is-dark">led state</span>
+								  <span id="ledState" class="tag is-success"><!--#led--></span>
+								</div>
+							  </div>
+						</div>
+					</div>
                 </div>
             </div>
         </section>
-		
-		<!-- /.section -->
-		<section class="section">
-			<div class="columns is-success is-vcentered">
-				<div class="column is-narrow">
-					<div class="boxContain">
-					  <div class="base">
-					  </div>
-					  <div class="leaf">
-						<div class="leafTop"></div>
-					  </div>
-					  <div class="leaf2">
-						<div class="leafTop"></div>
-					  </div>
-					  <div class="head">
-						<div class="lips">
-						  <div class="tongue">
-							<div class ="tongueGroove"></div>
-						  </div>
-						</div>
-						<div class="accent1"></div>
-						<div class="accent2"></div>
-						<div class="accent3"></div>
-						<div class="accent4"></div>
-					  </div>
-					  <div class="eyeWhite">
-						<div class="iris">
-						  <div class="pupil"></div>
-						</div>
-					  </div>
-					  <div class="eyeWhite2">
-						<div class="iris">
-						  <div class="pupil"></div>
-						</div>
-					  </div>
-					  <div class="rightEyebrow"></div>
-					  <div class="leftEyebrow"></div>
-					</div> 
-					<div class="glass">
-						<div class="water"></div>
-					</div>
-				</div>
-				<div class="column has-text-centered">				
-					<div class="ct-chart is-inline-block"></div>
-					<script type="text/javascript" src="js/waterGraph.js"></script>					
-				</div>
-				<div class="column has-text-centered">				
-					<div class="ct-chart2 is-inline-block"></div>
-					<script type="text/javascript" src="js/sunlightGraph.js"></script>					
-				</div>
-			</div>			
-		</section>
-		<!-- /.section -->
   </body>
 </html>
