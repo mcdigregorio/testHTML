@@ -3,6 +3,61 @@ var lastFive = [0,0,0,0,0,0,0,0,0,0];
 var lenFive = lastFive.length;
 
 var number;
+
+//Websocket stuff
+var ws;
+var retries;
+
+window.onload = function() {
+	wsOpen();
+	startPolling();
+}
+
+function startPolling() {
+	setInterval(function() { wsWrite('A'); }, 500);
+}
+
+function onMessage(evt) {
+	retries = 0;
+	var dv = new DataView(evt.data);
+	var val = dv.getUint16(0);
+	if (val == 0xBEEF || val == 0xDEAD)
+		console.log("LED switched");
+	else
+		console.log("ADC Value: " + val);
+}
+
+function wsOpen() {
+	if (ws === undefined || ws.readyState != 0) {
+		if (retries)
+			console.log("error", "WebSocket timeout, retrying..");
+		else
+			console.log("info", "Opening WebSocket..");
+		ws = new WebSocket("ws://" + location.host);
+		ws.binaryType = 'arraybuffer';
+		ws.onopen = function(evt) { retries = 0; console.log("done", "WebSocket is open."); };
+		ws.onerror = function(evt) { console.log("error", "WebSocket error!"); };
+		ws.onmessage = function(evt) { onMessage(evt); };
+		wsOpenStream();
+		retries = 0;
+	}
+}
+function wsOpenStream() {
+	var uri = "/stream"
+	var ws = new WebSocket("ws://" + location.host + uri);
+	ws.onmessage = function(evt) {
+		console.log(evt.data);
+		var stats = JSON.parse(evt.data);
+		console.log(stats);
+	};
+}
+
+function wsWrite(data) {
+	if (ws.readyState == 3 || retries++ > 5)
+		wsOpen();
+	else if (ws.readyState == 1)
+		ws.send(data);
+}
 														
 var data = {
 	labels: ['1', '2', '3', '4', '5', '6', '7', '8','9', '10'],
@@ -31,9 +86,9 @@ setInterval(function(){
 	
 	lastFive[lenFive - 1] = number;
 	
-	for (i = 0; i < lenFive; i++) {
+	/* for (i = 0; i < lenFive; i++) {
 		console.log(lastFive[i]);
-	}
+	} */
 	
 	var newData = {
 		labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],

@@ -31,9 +31,9 @@ setInterval(function(){
 	
 	lastFiveSun[lenFiveSun - 1] = number;
 	
-	for (i = 0; i < lenFiveSun; i++) {
+	/* for (i = 0; i < lenFiveSun; i++) {
 		console.log(lastFiveSun[i]);
-	}
+	} */
 	
 	var newDataSun = {
 		labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
