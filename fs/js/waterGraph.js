@@ -1,14 +1,36 @@
-var lastFive = [0,0,0,0,0,0,0,0,0,0];
-						
+var lastFive = [0,0,0,0,0,0,0,0,0,0];						
 var lenFive = lastFive.length;
-
 var number;
+
+var currentDate = new Date();
+
+var date = currentDate.getDate();
+var month = currentDate.getMonth();
+var year = currentDate.getFullYear();
+var hour = currentDate.getHours();
+var minute = currentDate.getMinutes();
+
+if (hour > 12)
+{
+	hour -= 12;
+	minute = currentDate.getMinutes() + " PM"
+}
+else
+{
+	minute = currentDate.getMinutes() + " AM"
+}
+
+var dateString = (month+1) + "-" + date + "-" + year;
+
+var timeStamp = hour + ":" + minute;
 
 //Websocket stuff
 var ws;
 var retries;
 
 window.onload = function() {
+	console.log(dateString);
+	console.log(timeStamp);
 	wsOpen();
 	startPolling();
 }
