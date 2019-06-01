@@ -1,36 +1,49 @@
-var lastFive = [0,0,0,0,0,0,0,0,0,0];						
+var lastFive = [0,0,0,0,0,0];
+var lastFiveDates = ["Date","Date","Date","Date","Date",""];						
 var lenFive = lastFive.length;
 var number;
+var currentDT;
 
-var currentDate = new Date();
-
-var date = currentDate.getDate();
-var month = currentDate.getMonth();
-var year = currentDate.getFullYear();
-var hour = currentDate.getHours();
-var minute = currentDate.getMinutes();
-
-if (hour > 12)
+function retrieveDateTime()
 {
-	hour -= 12;
-	minute = currentDate.getMinutes() + " PM"
-}
-else
-{
-	minute = currentDate.getMinutes() + " AM"
+	var currentDate = new Date();
+
+	var date = currentDate.getDate();
+	var month = currentDate.getMonth();
+	var year = currentDate.getFullYear();
+	var hour = currentDate.getHours();
+	var minute = currentDate.getMinutes();
+
+	if (hour > 12)
+	{
+		hour -= 12;
+		minute = currentDate.getMinutes() + " PM";
+	}
+	else
+	{
+		minute = currentDate.getMinutes() + " AM";
+	}
+
+	if (currentDate.getMinutes() < 10)
+	{
+		minute = "0" + minute;
+	}
+
+	var dateString = (month+1) + "-" + date + "-" + year;
+	var timeStamp = hour + ":" + minute;
+	var DT = dateString + "\n" + timeStamp;
+	
+	return DT;
 }
 
-var dateString = (month+1) + "-" + date + "-" + year;
-
-var timeStamp = hour + ":" + minute;
+currentDT = retrieveDateTime();
 
 //Websocket stuff
 var ws;
 var retries;
 
 window.onload = function() {
-	console.log(dateString);
-	console.log(timeStamp);
+	console.log(currentDT);
 	wsOpen();
 	startPolling();
 }
@@ -82,9 +95,9 @@ function wsWrite(data) {
 }
 														
 var data = {
-	labels: ['1', '2', '3', '4', '5', '6', '7', '8','9', '10'],
+	labels: ['1', '2', '3', '4', '5','6'],
 	series: [
-		[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+		[0, 0, 0, 0, 0, 0]
 	]
 };
 
@@ -101,21 +114,30 @@ var myChart = new Chartist.Line('.ct-chart', data, options);
 
 setInterval(function(){
 	number = Math.floor((Math.random() * 11));
+	currentDT = retrieveDateTime();
 	//console.log(number);												
 	for (i = 0; i < lenFive - 1; i++) {
 		lastFive[i] = lastFive[i+1];
+		//lastFiveDates[i] = lastFiveDates[i+1];		
+	}
+	
+	for (i = 0; i < lenFive - 2; i++) {
+		lastFiveDates[i] = lastFiveDates[i+1];		
 	}
 	
 	lastFive[lenFive - 1] = number;
+	lastFiveDates[lenFive - 2] = currentDT;
+	lastFiveDates[lenFive - 1] = "";
 	
 	/* for (i = 0; i < lenFive; i++) {
 		console.log(lastFive[i]);
 	} */
 	
 	var newData = {
-		labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-		series: [
-			lastFive
+		//labels: ['1', '2', '3', '4', '5'],
+		labels: lastFiveDates,
+		series:	[
+		lastFive
 		]
 	};
 	
