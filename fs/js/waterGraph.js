@@ -142,5 +142,5 @@ setInterval(function(){
 	};
 	
 	myChart.update(newData);
-	
+		
 }, 1000);
